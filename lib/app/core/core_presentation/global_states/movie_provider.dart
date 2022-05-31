@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:either_dart/either.dart';
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
 import 'package:examen_3/app/core/core_domain/usecases/usecases.dart';
@@ -40,7 +38,6 @@ class MovieProvider with ChangeNotifier {
 
   void getMoviesByActor(int idActor) async {
     final either = await movieUseCase.getMoviesByActor(idActor);
-    inspect(either);
     eitherCheck(either);
   }
 

@@ -38,22 +38,6 @@ class ActorsPage extends StatelessWidget {
     if (actorsProvider.actors!.isEmpty && actorsProvider.isLoading == false) {
       return const Center(child: Text('No hay actores'));
     }
-    return ListView.builder(
-      itemCount: actorsProvider.actors!.length,
-      itemBuilder: (BuildContext context, int index) {
-        final actor = actorsProvider.actors![index];
-        return InkWell(
-          onTap: () =>
-              Navigator.pushNamed(context, '/actorMovie', arguments: actor),
-          child: Card(
-            elevation: 4,
-            child: ListTile(
-              title: Text(actor.name),
-              subtitle: Text(actor.alias),
-            ),
-          ),
-        );
-      },
-    );
+    return ActorList(actors: actorsProvider.actors!);
   }
 }

@@ -42,6 +42,6 @@ class _ActorMoviesState extends State<ActorMovies> {
     if (movieProvider.movies!.isEmpty && movieProvider.isLoading == false) {
       return const Center(child: Text('No hay actores'));
     }
-    return Container();
+    return MovieList(movies: movieProvider.movies!);
   }
 }

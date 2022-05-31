@@ -29,7 +29,6 @@ class MovieRepositoryImplementation extends IMovieRepository {
       }
       return Right(movies);
     } catch (e) {
-      inspect(e);
       return const Left(true);
     }
   }
@@ -52,7 +51,6 @@ class MovieRepositoryImplementation extends IMovieRepository {
 
       return Right(movies);
     } catch (e) {
-      inspect(e);
       return const Left(true);
     }
   }

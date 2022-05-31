@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -28,7 +27,6 @@ class SQLHelperImplementation implements ISqlHelper {
   }
 
   Future<void> _onCreateDB(Database db, int version) async {
-    log('message');
     db.execute(
         '''CREATE TABLE Producers (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT )''');
 

@@ -1,7 +1,6 @@
 import 'package:examen_3/app/core/core_presentation/global_states/movie_provider.dart';
 import 'package:examen_3/app/core/core_presentation/global_widgets/global_widgets.dart';
 // import 'package:examen_3/app/core/sql_lite/fill_data.dart';
-import 'package:examen_3/app/features/home/presentation/widgets/movie_Card.dart';
 import 'package:flutter/material.dart';
 // import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
@@ -56,19 +55,6 @@ class _HomeState extends State<Home> {
     if (movieProvider.movies!.isEmpty && movieProvider.isLoading == false) {
       return const Center(child: Text('No hay películas'));
     }
-    return Column(
-      children: [
-        Expanded(
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            itemCount: movieProvider.movies!.length,
-            itemBuilder: (BuildContext context, int index) =>
-                MovieCard(movie: movieProvider.movies![index]),
-          ),
-        ),
-      ],
-    );
+    return MovieList(movies: movieProvider.movies!);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
+import 'package:examen_3/app/core/core_presentation/global_widgets/global_widgets.dart';
 import 'package:flutter/material.dart';
 
 class MovieContent extends StatelessWidget {
@@ -44,20 +45,7 @@ class MovieContent extends StatelessWidget {
                   style: TextStyle(fontSize: 22),
                 ),
               ),
-              ListView.builder(
-                itemCount: actors.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 4,
-                    child: ListTile(
-                      title: Text(actors[index].name),
-                      subtitle: Text(actors[index].alias),
-                    ),
-                  );
-                },
-              ),
+              ActorList(actors: actors)
             ],
           )
         ],

@@ -1,5 +1,20 @@
-import 'package:examen_3/app/core/core_domain/entities/entites.dart';
-import 'package:flutter/material.dart';
+part of './global_widgets.dart';
+
+class MovieList extends StatelessWidget {
+  const MovieList({Key? key, required this.movies}) : super(key: key);
+  final List<Movie> movies;
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+      itemCount: movies.length,
+      itemBuilder: (BuildContext context, int index) =>
+          MovieCard(movie: movies[index]),
+    );
+  }
+}
 
 class MovieCard extends StatelessWidget {
   const MovieCard({Key? key, required this.movie}) : super(key: key);

@@ -35,7 +35,6 @@ class ActorRepositoryImplementation extends IActorsRepository {
     try {
       final query =
           'SELECT * FROM MovieActors AS ma INNER JOIN Actors AS a ON ma.id = a.id WHERE ma.movie_id = $movieId';
-      log(query);
       final result = await sqlHelper.get(query);
       if (result.isEmpty) return const Right([]);
       final actors = result.map((e) => ActorModel.fromJson(e)).toList();
