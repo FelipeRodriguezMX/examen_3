@@ -1,6 +1,7 @@
+import 'package:examen_3/app/core/core_presentation/global_states/actor_provider.dart';
+import 'package:examen_3/app/core/core_presentation/global_states/movie_provider.dart';
 import 'package:examen_3/app/core/routes/routes.dart';
 import 'package:examen_3/app/core/sql_lite/sql_helper.dart';
-import 'package:examen_3/app/features/home/presentation/providers/movie_provider.dart';
 import 'package:examen_3/injection_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -32,6 +33,7 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => MovieProvider()),
+        ChangeNotifierProvider(create: (context) => ActorProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

@@ -17,7 +17,7 @@ class SQLHelperImplementation implements ISqlHelper {
   @override
   Future<Database> database() async {
     if (_db != null) return _db!;
-    _db = await _initDB('examen21.db');
+    _db = await _initDB('examen.db');
     return _db!;
   }
 
@@ -40,12 +40,6 @@ class SQLHelperImplementation implements ISqlHelper {
     );
     db.execute(
         '''CREATE TABLE MovieActors (id INTEGER PRIMARY KEY  AUTOINCREMENT, movie_id INTEGER , actor_id INTEGER , FOREIGN KEY(movie_id) REFERENCES Movies(id), FOREIGN KEY(actor_id) REFERENCES Actors(id))''');
-
-    var tableNames = (await db
-            .query('sqlite_master', where: 'type = ?', whereArgs: ['table']))
-        .map((row) => row['name'] as String)
-        .toList(growable: false);
-    inspect(tableNames);
   }
 
   @override
@@ -55,9 +49,9 @@ class SQLHelperImplementation implements ISqlHelper {
   }
 
   @override
-  Future<List<Map<String, Object?>>> get(String query) async {
+  Future<List<Map<String, dynamic>>> get(String query) async {
     _db ??= await database();
-    final result = await _db!.rawQuery('SELECT * FROM Movies');
+    final result = await _db!.rawQuery(query);
     return result;
   }
 

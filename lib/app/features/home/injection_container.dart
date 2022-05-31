@@ -1,7 +1,7 @@
+import 'package:examen_3/app/core/core_datasource/repositorys/repositorys.dart';
+import 'package:examen_3/app/core/core_domain/repositorys/repositorys.dart';
+import 'package:examen_3/app/core/core_domain/usecases/usecases.dart';
 import 'package:examen_3/app/core/sql_lite/sql_helper.dart';
-import 'package:examen_3/app/features/home/datasource/repositorys/repositorys.dart';
-import 'package:examen_3/app/features/home/domain/repositorys/repositorys.dart';
-import 'package:examen_3/app/features/home/domain/usecases/usecases.dart';
 import 'package:examen_3/injection_container.dart';
 
 void homeInjectionContainer() {

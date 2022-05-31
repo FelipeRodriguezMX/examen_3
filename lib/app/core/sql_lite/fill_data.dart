@@ -36,8 +36,6 @@ class FillData {
       'INSERT INTO Movies(name, description, producer_id) VALUES("The Godfather: Part II", "The early life and career of Vito Corleone in 1920s New York is portrayed while his son, Michael, expands and tightens his grip on the family crime syndicate.", 1)',
       'INSERT INTO Movies(name, description, producer_id) VALUES("The Godfather: Part III", "The Godfather: Part II continues as the Corleone family fights to free the city from organized crime.", 1)',
       'INSERT INTO Movies(name, description, producer_id) VALUES("The Dark Knight", "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.", 2)',
-      "INSERT INTO Movies(name, description, producer_id) VALUES('The Dark Knight Rises', 'Two years after the Joker''s reign of anarchy, the Dark Knight, with the help of the enigmatic Catwoman, is forced from his exile to save Gotham City, now on the edge of total annihilation, from the brutal guerrilla",
-      "INSERT INTO Movies(name, description, producer_id) VALUES('Pulp Fiction', 'The lives of two mob hitmen, a boxer, a gangster''s mafioso, and a pair of diner bandits intertwine in four tales of violence and redemption.', 3)",
     ];
     for (var item in query) {
       await sqlHelper.insert(query: item);
