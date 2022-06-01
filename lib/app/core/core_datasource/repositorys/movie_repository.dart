@@ -7,8 +7,19 @@ class MovieRepositoryImplementation extends IMovieRepository {
   @override
   Future<Either<bool, bool>> createMovie(MovieModel movie) async {
     try {
+      final query =
+          'INSERT INTO movies (name, description, producer_id) VALUES ("${movie.name}", "${movie.description}", ${movie.producer_id})';
+      final result = await sqlHelper.insert(query: query);
+      if (result == false) return const Left(true);
+      for (var actor in movie.actors!) {
+        final query =
+            'INSERT INTO MovieActors (movie_id, actor_id) VALUES (${movie.id},${actor.id})';
+        final result = await sqlHelper.insert(query: query);
+        if (result == false) return const Left(true);
+      }
       return const Right(true);
     } catch (e) {
+      inspect(e);
       return const Left(true);
     }
   }

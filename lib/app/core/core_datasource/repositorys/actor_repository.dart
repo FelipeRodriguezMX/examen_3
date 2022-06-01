@@ -9,7 +9,9 @@ class ActorRepositoryImplementation extends IActorsRepository {
     try {
       final query =
           'INSERT INTO Actors (name, alias) VALUES ("${actor.name}", "${actor.alias}")';
+      log(query);
       final result = await sqlHelper.insert(query: query);
+      inspect(result);
       if (result == true) return const Right(true);
       return const Left(false);
     } catch (e) {

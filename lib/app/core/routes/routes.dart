@@ -1,5 +1,6 @@
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
 import 'package:examen_3/app/features/actors/actors.dart';
+import 'package:examen_3/app/features/forms/forms.dart';
 import 'package:examen_3/app/features/movie/presentation/movie_page.dart';
 import 'package:examen_3/app/features/producers/producers.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,49 @@ class RouteGenerator {
           );
         }
         break;
+      case '/forms':
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => const FormsPage(),
+        );
+      case '/formsListActors':
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => const ActorsListPage(),
+        );
+      case '/formActor':
+        if (args is Actor) {
+          return MaterialPageRoute<dynamic>(
+            builder: (context) => ActorsForm(actor: args),
+          );
+        }
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => ActorsForm(),
+        );
+      case '/formsListProducers':
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => const ProducersListPage(),
+        );
+      case '/formProducer':
+        if (args is Producer) {
+          return MaterialPageRoute<dynamic>(
+            builder: (context) => ProducersForm(producer: args),
+          );
+        }
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => ProducersForm(),
+        );
+      case '/formsListMovies':
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => const MovieListPage(),
+        );
+      case '/formMovie':
+        if (args is Movie) {
+          return MaterialPageRoute<dynamic>(
+            builder: (context) => MovieForm(movie: args),
+          );
+        }
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => MovieForm(),
+        );
       default:
         return _errorRoute();
     }

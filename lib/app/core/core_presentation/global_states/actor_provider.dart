@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:either_dart/either.dart';
 import 'package:examen_3/app/core/core_datasource/models/models.dart';
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
@@ -36,8 +38,16 @@ class ActorProvider with ChangeNotifier {
     eitherCheck(either);
   }
 
-  Future<Either<bool, bool>> create(ActorModel actor) async =>
-      actorUseCases.createActor(actor);
+  FutureOr<String?> create(ActorModel actor, BuildContext context) async {
+    final either = await actorUseCases.createActor(actor);
+    return either.fold((left) {
+      return 'Error';
+    }, (right) {
+      getActors();
+      Navigator.of(context).pop();
+      return null;
+    });
+  }
 
   void eitherCheck(Either<bool, List<Actor>> either) {
     either.fold((left) {

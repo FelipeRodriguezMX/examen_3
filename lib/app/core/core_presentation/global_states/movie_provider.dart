@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:either_dart/either.dart';
+import 'package:examen_3/app/core/core_datasource/models/models.dart';
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
 import 'package:examen_3/app/core/core_domain/usecases/usecases.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,6 +15,7 @@ class MovieProvider with ChangeNotifier {
   List<Movie>? movies;
   bool? failure;
   bool isLoading = true;
+  List<Actor> selectedActors = [];
 
   final MovieUseCases movieUseCase = GetIt.instance();
 
@@ -54,6 +58,23 @@ class MovieProvider with ChangeNotifier {
       movies = right;
       isLoading = false;
       notifyListeners();
+    });
+  }
+
+  void addActor(Actor actor) {
+    selectedActors.add(actor);
+    notifyListeners();
+    inspect(selectedActors);
+  }
+
+  create(MovieModel movie, BuildContext context) async {
+    final either = await movieUseCase.createMovie(movie);
+    return either.fold((left) {
+      return 'Error';
+    }, (right) {
+      getMovies();
+      Navigator.of(context).pop();
+      return null;
     });
   }
 }

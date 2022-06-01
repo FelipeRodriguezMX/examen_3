@@ -45,7 +45,10 @@ class MovieContent extends StatelessWidget {
                   style: TextStyle(fontSize: 22),
                 ),
               ),
-              ActorList(actors: actors)
+              ActorList(
+                actors: actors,
+                route: '/actorMovie',
+              )
             ],
           )
         ],

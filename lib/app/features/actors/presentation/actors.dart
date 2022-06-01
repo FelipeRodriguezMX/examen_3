@@ -41,6 +41,10 @@ class ActorsPage extends StatelessWidget {
     if (actorsProvider.actors!.isEmpty && actorsProvider.isLoading == false) {
       return const Center(child: Text('No hay actores'));
     }
-    return ActorList(actors: actorsProvider.actors!);
+    return ActorList(
+      actors: actorsProvider.actors!,
+      route: '/actorMovie',
+      physics: const BouncingScrollPhysics(),
+    );
   }
 }

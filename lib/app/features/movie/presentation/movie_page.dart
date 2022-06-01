@@ -28,7 +28,7 @@ class _MoviePageState extends State<MoviePage> {
   Widget body(BuildContext context) {
     final actorsProvider = Provider.of<ActorProvider>(context, listen: true);
     if (actorsProvider.isEmpty() && actorsProvider.isLoading == true) {
-      actorsProvider.getActorsByMovie(widget.movie.id);
+      actorsProvider.getActorsByMovie(widget.movie.id!);
       return const Center(child: CircularProgressIndicator());
     }
     if (actorsProvider.failure == true && actorsProvider.isLoading == false) {

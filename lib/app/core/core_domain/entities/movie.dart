@@ -6,13 +6,13 @@ class Movie {
     required this.name,
     required this.description,
     required this.producer,
-    // required this.actors,
+    required this.actors,
     required this.producer_id,
   });
-  int id;
+  int? id;
   String name;
   String description;
   Producer? producer;
-  // List<Actor>? actors;
+  List<Actor>? actors;
   int? producer_id;
 }

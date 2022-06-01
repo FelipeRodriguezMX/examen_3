@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:either_dart/either.dart';
 import 'package:examen_3/app/core/core_datasource/models/models.dart';
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
@@ -43,7 +45,14 @@ class ProducerProvider with ChangeNotifier {
     });
   }
 
-  void create(ProducerModel producer) {
-    producersUseCases.createProducer(producer);
+  FutureOr<String?> create(ProducerModel producer, BuildContext context) async {
+    final either = await producersUseCases.createProducer(producer);
+    return either.fold((left) {
+      return 'Error';
+    }, (right) {
+      getProducers();
+      Navigator.of(context).pop();
+      return null;
+    });
   }
 }
