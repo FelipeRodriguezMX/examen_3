@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 
 abstract class ISqlHelper {
   Future<void> database();
-  Future<bool> insert({required String query});
+  Future<int> insert({required String query});
   Future<bool> edit({required String query});
   Future<List<Map<String, Object?>>> get(String query);
 }
@@ -54,12 +54,12 @@ class SQLHelperImplementation implements ISqlHelper {
   }
 
   @override
-  Future<bool> insert({
+  Future<int> insert({
     required String query,
   }) async {
     _db ??= await database();
 
     final result = await _db!.rawInsert(query);
-    return (result >= 0) ? true : false;
+    return (result >= 0) ? result : 0;
   }
 }

@@ -9,7 +9,7 @@ class ProducerRepositoryImplementation extends IProducerRepository {
     try {
       final query = 'INSERT INTO Producers (name) VALUES ("${producer.name}")';
       final result = await sqlHelper.insert(query: query);
-      if (result == true) return const Right(true);
+      if (result > 0) return const Right(true);
       return const Left(false);
     } catch (e) {
       return const Left(false);

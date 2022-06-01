@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:either_dart/either.dart';
 import 'package:examen_3/app/core/core_datasource/models/models.dart';
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
@@ -64,7 +62,7 @@ class MovieProvider with ChangeNotifier {
   void addActor(Actor actor) {
     selectedActors.add(actor);
     notifyListeners();
-    inspect(selectedActors);
+    (selectedActors);
   }
 
   create(MovieModel movie, BuildContext context) async {

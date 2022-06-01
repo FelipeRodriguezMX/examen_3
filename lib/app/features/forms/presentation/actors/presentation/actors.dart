@@ -1,7 +1,18 @@
 part of '../../forms.dart';
 
-class ActorsListPage extends StatelessWidget {
+class ActorsListPage extends StatefulWidget {
   const ActorsListPage({Key? key}) : super(key: key);
+
+  @override
+  State<ActorsListPage> createState() => _ActorsListPageState();
+}
+
+class _ActorsListPageState extends State<ActorsListPage> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<ActorProvider>(context, listen: false).clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +30,7 @@ class ActorsListPage extends StatelessWidget {
         child: BlankBottomAppBar(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, '/formProducer'),
+        onPressed: () => Navigator.pushNamed(context, '/formActor'),
         child: const Icon(Icons.add),
       ),
     );
@@ -47,24 +58,10 @@ class ActorsListPage extends StatelessWidget {
         return Card(
           elevation: 4,
           child: InkWell(
-            // onTap: () => Navigator.pushNamed(
-            //   context,
-            //   '/formActor',
-            //   arguments: actorsProvider.actors![index],
-            // ),
             onTap: null,
             child: ListTile(
               title: Text(actorsProvider.actors![index].name),
               subtitle: Text(actorsProvider.actors![index].alias),
-              // trailing: Column(
-              //   children: [
-              //     CustomIconButton(
-              //       icon: Icons.edit,
-              //       onPress: () {},
-              //       backgroundColor: Colors.black,
-              //     ),
-              //   ],
-              // ),
             ),
           ),
         );

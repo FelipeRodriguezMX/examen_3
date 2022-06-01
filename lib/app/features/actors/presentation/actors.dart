@@ -3,8 +3,19 @@ import 'package:examen_3/app/core/core_presentation/global_widgets/global_widget
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ActorsPage extends StatelessWidget {
+class ActorsPage extends StatefulWidget {
   const ActorsPage({Key? key}) : super(key: key);
+
+  @override
+  State<ActorsPage> createState() => _ActorsPageState();
+}
+
+class _ActorsPageState extends State<ActorsPage> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<ActorProvider>(context, listen: false).clear();
+  }
 
   @override
   Widget build(BuildContext context) {

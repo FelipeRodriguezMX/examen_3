@@ -17,12 +17,6 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     context.read<MovieProvider>().clear();
-
-    // FillData fillData = GetIt.instance();
-    // fillData.insertActors();
-    // fillData.insertProducers();
-    // fillData.insertMovies();
-    // fillData.insertMovieActor();
   }
 
   @override

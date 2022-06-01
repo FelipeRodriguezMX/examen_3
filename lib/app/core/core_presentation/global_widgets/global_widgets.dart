@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
 import 'package:flutter/material.dart';
 
