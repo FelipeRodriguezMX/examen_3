@@ -1,4 +1,5 @@
 import 'package:either_dart/either.dart';
+import 'package:examen_3/app/core/core_datasource/models/models.dart';
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
 import 'package:examen_3/app/core/core_domain/usecases/usecases.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,7 +24,6 @@ class ProducerProvider with ChangeNotifier {
     producers = null;
     isLoading = true;
     failure = null;
-    // notifyListeners();
   }
 
   void getProducers() async {
@@ -41,5 +41,9 @@ class ProducerProvider with ChangeNotifier {
       isLoading = false;
       notifyListeners();
     });
+  }
+
+  void create(ProducerModel producer) {
+    producersUseCases.createProducer(producer);
   }
 }

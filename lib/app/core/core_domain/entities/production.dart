@@ -5,7 +5,7 @@ class Producer {
     required this.id,
     required this.name,
   });
-  int id;
+  int? id;
   String name;
 
   Map<String, dynamic> toJson() => {

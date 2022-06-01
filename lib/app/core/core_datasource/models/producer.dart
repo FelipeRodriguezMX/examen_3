@@ -2,7 +2,7 @@ part of './models.dart';
 
 class ProducerModel extends Producer {
   ProducerModel({
-    required int id,
+    required int? id,
     required String name,
   }) : super(
           id: id,

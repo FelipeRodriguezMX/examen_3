@@ -7,7 +7,10 @@ class ProducerRepositoryImplementation extends IProducerRepository {
   @override
   Future<Either<bool, bool>> createProducer(ProducerModel producer) async {
     try {
-      return const Right(true);
+      final query = 'INSERT INTO Producers (name) VALUES ("${producer.name}")';
+      final result = await sqlHelper.insert(query: query);
+      if (result == true) return const Right(true);
+      return const Left(false);
     } catch (e) {
       return const Left(false);
     }

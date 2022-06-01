@@ -1,4 +1,5 @@
 import 'package:either_dart/either.dart';
+import 'package:examen_3/app/core/core_datasource/models/models.dart';
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
 import 'package:examen_3/app/core/core_domain/usecases/usecases.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,6 +35,9 @@ class ActorProvider with ChangeNotifier {
     final either = await actorUseCases.getActorsByMovie(idMovie);
     eitherCheck(either);
   }
+
+  Future<Either<bool, bool>> create(ActorModel actor) async =>
+      actorUseCases.createActor(actor);
 
   void eitherCheck(Either<bool, List<Actor>> either) {
     either.fold((left) {

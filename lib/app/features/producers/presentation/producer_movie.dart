@@ -32,7 +32,7 @@ class _ProducerMoviesState extends State<ProducerMovies> {
   Widget body(BuildContext context) {
     final movieProvider = Provider.of<MovieProvider>(context, listen: true);
     if (movieProvider.isEmpty() && movieProvider.isLoading == true) {
-      movieProvider.getMoviesByActor(widget.producer.id);
+      movieProvider.getMoviesByActor(widget.producer.id!);
       return const Center(child: CircularProgressIndicator());
     }
     if (movieProvider.failure == true && movieProvider.isLoading == false) {
