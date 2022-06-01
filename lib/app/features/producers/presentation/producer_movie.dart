@@ -4,15 +4,15 @@ import 'package:examen_3/app/core/core_presentation/global_widgets/global_widget
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ActorMovies extends StatefulWidget {
-  const ActorMovies({Key? key, required this.actor}) : super(key: key);
-  final Actor actor;
+class ProducerMovies extends StatefulWidget {
+  const ProducerMovies({Key? key, required this.producer}) : super(key: key);
+  final Producer producer;
 
   @override
-  State<ActorMovies> createState() => _ActorMoviesState();
+  State<ProducerMovies> createState() => _ProducerMoviesState();
 }
 
-class _ActorMoviesState extends State<ActorMovies> {
+class _ProducerMoviesState extends State<ProducerMovies> {
   @override
   void initState() {
     super.initState();
@@ -22,16 +22,17 @@ class _ActorMoviesState extends State<ActorMovies> {
   @override
   Widget build(BuildContext context) {
     return SimplePage(
-        appBar: AppBar(
-          title: Text(widget.actor.name),
-        ),
-        child: body(context));
+      appBar: AppBar(
+        title: Text(widget.producer.name),
+      ),
+      child: body(context),
+    );
   }
 
   Widget body(BuildContext context) {
     final movieProvider = Provider.of<MovieProvider>(context, listen: true);
     if (movieProvider.isEmpty() && movieProvider.isLoading == true) {
-      movieProvider.getMoviesByActor(widget.actor.id!);
+      movieProvider.getMoviesByActor(widget.producer.id);
       return const Center(child: CircularProgressIndicator());
     }
     if (movieProvider.failure == true && movieProvider.isLoading == false) {

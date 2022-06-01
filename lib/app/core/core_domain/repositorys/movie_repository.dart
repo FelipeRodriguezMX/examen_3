@@ -5,4 +5,5 @@ abstract class IMovieRepository {
   Future<Either<bool, List<Movie>>> getAllMovies();
 
   Future<Either<bool, List<Movie>>> getMoviesByActor(int id);
+  Future<Either<bool, List<Movie>>> getMoviesByProducer(int id);
 }

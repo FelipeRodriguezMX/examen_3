@@ -8,17 +8,20 @@ class ActorsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SimplePage(
-      child: body(context),
-      appBar: AppBar(
-        title: const Text('Actores'),
-        elevation: 3,
-        automaticallyImplyLeading: false,
-      ),
-      bottomAppBar: const BottomAppBar(
-        elevation: 3,
-        color: Colors.blue,
-        child: CustomBottomAppBar(),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: SimplePage(
+        child: body(context),
+        appBar: AppBar(
+          title: const Text('Actores'),
+          elevation: 3,
+          automaticallyImplyLeading: false,
+        ),
+        bottomAppBar: const BottomAppBar(
+          elevation: 3,
+          color: Colors.blue,
+          child: CustomBottomAppBar(),
+        ),
       ),
     );
   }

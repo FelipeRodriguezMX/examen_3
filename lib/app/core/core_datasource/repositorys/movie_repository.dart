@@ -54,4 +54,24 @@ class MovieRepositoryImplementation extends IMovieRepository {
       return const Left(true);
     }
   }
+
+  @override
+  Future<Either<bool, List<Movie>>> getMoviesByProducer(int id) async {
+    try {
+      final query = 'SELECT * FROM Movies WHERE producer_id = $id';
+      final result = await sqlHelper.get(query);
+      if (result.isEmpty) return const Right([]);
+      List<Movie> movies = [];
+      for (var item in result) {
+        Movie movie = MovieModel.fromJson(item);
+        final producer = await sqlHelper
+            .get('SELECT * FROM Producers WHERE id = ${movie.producer_id}');
+        movie.producer = ProducerModel.fromJson(producer[0]);
+        movies.add(movie);
+      }
+      return Right(movies);
+    } catch (e) {
+      return const Left(true);
+    }
+  }
 }

@@ -23,7 +23,6 @@ class MovieProvider with ChangeNotifier {
     movies = null;
     isLoading = true;
     failure = null;
-    // notifyListeners();
   }
 
   void initData(List<Movie> movie) {
@@ -38,6 +37,11 @@ class MovieProvider with ChangeNotifier {
 
   void getMoviesByActor(int idActor) async {
     final either = await movieUseCase.getMoviesByActor(idActor);
+    eitherCheck(either);
+  }
+
+  void getMoviesByProducer(int idProducer) async {
+    final either = await movieUseCase.getMoviesByProducer(idProducer);
     eitherCheck(either);
   }
 

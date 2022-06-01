@@ -23,7 +23,7 @@ class CustomBottomAppBar extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.movie),
             color: Colors.white,
-            onPressed: () {},
+            onPressed: () => Navigator.of(context).pushNamed('/producer'),
           ),
         ],
       ),

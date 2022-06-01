@@ -16,6 +16,8 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    context.read<MovieProvider>().clear();
+
     // FillData fillData = GetIt.instance();
     // fillData.insertActors();
     // fillData.insertProducers();
@@ -25,17 +27,20 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return SimplePage(
-      child: body(context),
-      appBar: AppBar(
-        title: const Text('Películas'),
-        automaticallyImplyLeading: false,
-        elevation: 3,
-      ),
-      bottomAppBar: const BottomAppBar(
-        elevation: 3,
-        color: Colors.blue,
-        child: CustomBottomAppBar(),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: SimplePage(
+        child: body(context),
+        appBar: AppBar(
+          title: const Text('Películas'),
+          automaticallyImplyLeading: false,
+          elevation: 3,
+        ),
+        bottomAppBar: const BottomAppBar(
+          elevation: 3,
+          color: Colors.blue,
+          child: CustomBottomAppBar(),
+        ),
       ),
     );
   }

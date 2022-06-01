@@ -5,9 +5,21 @@ import 'package:examen_3/app/features/movie/presentation/widgets/movie_content.d
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class MoviePage extends StatelessWidget {
+class MoviePage extends StatefulWidget {
   const MoviePage({Key? key, required this.movie}) : super(key: key);
   final Movie movie;
+
+  @override
+  State<MoviePage> createState() => _MoviePageState();
+}
+
+class _MoviePageState extends State<MoviePage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ActorProvider>().clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SimplePage(child: body(context));
@@ -16,7 +28,7 @@ class MoviePage extends StatelessWidget {
   Widget body(BuildContext context) {
     final actorsProvider = Provider.of<ActorProvider>(context, listen: true);
     if (actorsProvider.isEmpty() && actorsProvider.isLoading == true) {
-      actorsProvider.getActorsByMovie(movie.id);
+      actorsProvider.getActorsByMovie(widget.movie.id);
       return const Center(child: CircularProgressIndicator());
     }
     if (actorsProvider.failure == true && actorsProvider.isLoading == false) {
@@ -28,6 +40,6 @@ class MoviePage extends StatelessWidget {
     if (actorsProvider.actors!.isEmpty && actorsProvider.isLoading == false) {
       return const Center(child: Text('No hay actores'));
     }
-    return MovieContent(movie: movie, actors: actorsProvider.actors!);
+    return MovieContent(movie: widget.movie, actors: actorsProvider.actors!);
   }
 }

@@ -23,7 +23,6 @@ class ActorProvider with ChangeNotifier {
     actors = null;
     isLoading = true;
     failure = null;
-    // notifyListeners();
   }
 
   void getActors() async {

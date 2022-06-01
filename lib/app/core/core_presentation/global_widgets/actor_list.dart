@@ -25,22 +25,3 @@ class ActorList extends StatelessWidget {
     );
   }
 }
-
-
-// return ListView.builder(
-    //   itemCount: actorsProvider.actors!.length,
-    //   itemBuilder: (BuildContext context, int index) {
-    //     final actor = actorsProvider.actors![index];
-    //     return InkWell(
-    //       onTap: () =>
-    //           Navigator.pushNamed(context, '/actorMovie', arguments: actor),
-    //       child: Card(
-    //         elevation: 4,
-    //         child: ListTile(
-    //           title: Text(actor.name),
-    //           subtitle: Text(actor.alias),
-    //         ),
-    //       ),
-    //     );
-    //   },
-    // );

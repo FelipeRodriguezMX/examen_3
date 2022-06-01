@@ -1,6 +1,7 @@
 import 'package:examen_3/app/core/core_domain/entities/entites.dart';
 import 'package:examen_3/app/features/actors/actors.dart';
 import 'package:examen_3/app/features/movie/presentation/movie_page.dart';
+import 'package:examen_3/app/features/producers/producers.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/home/presentation/home.dart';
@@ -27,6 +28,17 @@ class RouteGenerator {
         if (args is Actor) {
           return MaterialPageRoute<dynamic>(
             builder: (context) => ActorMovies(actor: args),
+          );
+        }
+        break;
+      case '/producer':
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => const ProducersPage(),
+        );
+      case '/producerMovie':
+        if (args is Producer) {
+          return MaterialPageRoute<dynamic>(
+            builder: (context) => ProducerMovies(producer: args),
           );
         }
         break;
